@@ -6,6 +6,8 @@ import Header from '../components/header'
 import { Post } from '../typings';
 import {sanityClient, urlFor} from "../sanity";
 import Posts from '../modules/posts'
+import Link from 'next/link'
+import PostElement from '../modules/posts/components'
 
 interface Props {
   posts: [Post];

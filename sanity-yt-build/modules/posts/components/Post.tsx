@@ -1,12 +1,14 @@
+import Link from 'next/link';
 import React from 'react';
 import { urlFor } from '../../../sanity';
 import { Post } from '../../../typings';
 interface Props{
     post: Post;
 }
-const PostElement = (props: Props) => {
+const PostElement = (props: Props): JSX.Element => {
     const { post } = props;
   return (
+    <Link href={`/post/${post.slug.current}`}>
     <div className='group cursor-pointer border rounded-lg overflow-hidden'>
         <img src={
           urlFor(post.mainImage).url()!
@@ -27,6 +29,7 @@ const PostElement = (props: Props) => {
         alt="" 
         />
     </div>
+    </Link>
   )
 }
 

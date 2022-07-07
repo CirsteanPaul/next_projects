@@ -19,8 +19,7 @@ const PostPage = ({post}: Props) => {
         <article className='max-w-3xl mx-auto p-5'>
             <h1 className='text-3xl mt-10 mb-3'>{post.title}</h1>
             <h2 className='text-xl font-light text-gray-500 mb-2'>{post.description}</h2>
-        </article>
-        <div className='flex items-center space-x-2'>
+            <div className='flex items-center space-x-2'>
             <img 
             className='h-10 w-10 rounded-full'
             src={urlFor(post.author.image).url()!}
@@ -58,6 +57,37 @@ const PostPage = ({post}: Props) => {
             
             />
         </div>
+        </article>
+        <hr className='max-w-lg my-5 mx-auto border border-yellow-500'/>
+       <form className='flex flex-col p-5 max-w-2xl mx-auto mb-10'>
+        <h3 className='text-sm text-yellow-500'>Enjoyed this article?</h3>
+        <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
+        <hr className='py-3 mt-2'/>
+        <label>
+            <span className='text-gray-700'>Name</span>
+            <input
+            className='shadow border rounded py-2 pxx-3 form-input mt-1 block
+            w-full ring-yellow-500 focus:ring outline-none'
+             placeholder='' type="text"/>
+        </label>
+
+        <label>
+            <span className='text-gray-700'>Email</span>
+            <input
+             className='shadow border rounded py-2 pxx-3 form-input mt-1 block
+             w-full ring-yellow-500 focus:ring outline-none' 
+             placeholder='' type="text"/>
+        </label>
+
+        <label>
+            <span className='text-gray-700'>Comment</span>
+            <textarea
+             className='shadow border rounded py-2 px-3 form-textarea mt-1
+             block w-full ring-yellow-500 focus:ring outline-none'
+             placeholder='' rows={8}/>
+        </label>
+
+       </form>
     </main>
   )
 }
