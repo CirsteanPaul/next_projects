@@ -3,12 +3,15 @@ import React, { Children } from 'react'
 import PortableText from 'react-portable-text';
 import Header from '../../components/header';
 import { sanityClient, urlFor } from '../../sanity';
+import { useForm, SubmitHandler} from "react-hook-form";
 import { Post } from '../../typings';
+import CommentForm from '../../modules/posts/components/comment-section';
 interface Props{
     post: Post,
 }
+
 const PostPage = ({post}: Props) => {
-    console.log(post);
+    
   return (
     <main>
         <Header />
@@ -59,35 +62,7 @@ const PostPage = ({post}: Props) => {
         </div>
         </article>
         <hr className='max-w-lg my-5 mx-auto border border-yellow-500'/>
-       <form className='flex flex-col p-5 max-w-2xl mx-auto mb-10'>
-        <h3 className='text-sm text-yellow-500'>Enjoyed this article?</h3>
-        <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
-        <hr className='py-3 mt-2'/>
-        <label>
-            <span className='text-gray-700'>Name</span>
-            <input
-            className='shadow border rounded py-2 pxx-3 form-input mt-1 block
-            w-full ring-yellow-500 focus:ring outline-none'
-             placeholder='' type="text"/>
-        </label>
-
-        <label>
-            <span className='text-gray-700'>Email</span>
-            <input
-             className='shadow border rounded py-2 pxx-3 form-input mt-1 block
-             w-full ring-yellow-500 focus:ring outline-none' 
-             placeholder='' type="text"/>
-        </label>
-
-        <label>
-            <span className='text-gray-700'>Comment</span>
-            <textarea
-             className='shadow border rounded py-2 px-3 form-textarea mt-1
-             block w-full ring-yellow-500 focus:ring outline-none'
-             placeholder='' rows={8}/>
-        </label>
-
-       </form>
+        <CommentForm post={post}/>
     </main>
   )
 }
