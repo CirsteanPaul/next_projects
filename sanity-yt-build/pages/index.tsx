@@ -8,6 +8,7 @@ import {sanityClient, urlFor} from "../sanity";
 import Posts from '../modules/posts'
 import Link from 'next/link'
 import PostElement from '../modules/posts/components'
+import Ceva from '../components/box/ceva'
 
 interface Props {
   posts: [Post];
@@ -21,6 +22,7 @@ const Home = ({posts}: Props) => {
     </Head>
     <Header/>
     <Banner />
+    {/* <Ceva></Ceva> */}
     <Posts posts = {posts} />
     </div>
 )

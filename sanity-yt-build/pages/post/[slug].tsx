@@ -6,12 +6,12 @@ import { sanityClient, urlFor } from '../../sanity';
 import { useForm, SubmitHandler} from "react-hook-form";
 import { Post } from '../../typings';
 import CommentForm from '../../modules/posts/components/comment-section';
+import CommentsSection from '../../components/comments-section';
 interface Props{
     post: Post,
 }
 
 const PostPage = ({post}: Props) => {
-    
   return (
     <main>
         <Header />
@@ -63,6 +63,7 @@ const PostPage = ({post}: Props) => {
         </article>
         <hr className='max-w-lg my-5 mx-auto border border-yellow-500'/>
         <CommentForm post={post}/>
+        <CommentsSection post={post}/>
     </main>
   )
 }

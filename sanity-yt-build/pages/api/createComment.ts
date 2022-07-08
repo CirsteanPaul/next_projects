@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const { _id, name, email, comment} = JSON.parse(req.body);
+    const { _id, name, email, comment} = req.body;
 
     try{
         await client.create({

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Post } from '../../../../typings';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 interface IFormInput {
     _id: string,
     name: string;
@@ -13,16 +15,25 @@ interface Props{
 }
 const CommentForm = ({post}: Props) => {
     const { register, handleSubmit, formState: {errors}, } = useForm<IFormInput>();
+    const [succesfulAdded, setSuccesfulAdded] = useState(false);
     const onSubmit: SubmitHandler<IFormInput> = async(data) =>{
         try{
-        const response = await fetch('/api/createComment', {
-            method:"POST",
-            body: JSON.stringify(data),
-        })
+        const response = await axios.post('/api/createComment', {data});
+        
+        Swal.fire(
+            'The comment has been sent',
+            'Thank you for leaving a comment!',
+            "success"
+        )
         }
         catch(e) {
             console.log(e);
-
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: 'Try again later'
+              })
             // swallow exception
         }
     }
